@@ -1,0 +1,38 @@
+<!-- 페이지 영역 -->
+<div class="pagination justify-content-center">
+	<ul class="pagination justify-content-center">
+		<li class="page-item">
+			<a class="page-link" href="/post/search?keyword={{keyword}}&page=1" aria-label="First">&laquo;</a>
+			<span aria-hidden="true"></span>
+		</li>
+		{{#pageVo.hasPrev}}
+			<li class="page-item">
+				<a class="page-link" href="/post/search?keyword={{keyword}}&page={{pageVo.prevIndex}}" aria-label="Previous">&lsaquo;</a>
+				<span aria-hidden="true"></span>
+			</li>
+		{{/pageVo.hasPrev}}
+		
+		<!-- 이전 페이지가 존재하지 않으면 < 버튼이 안 보임  -->
+		{{^pageVo.hasPrev}}
+		{{/pageVo.hasPrev}}
+			
+		{{#pageIndex}}
+			<li class="page-item"><a class="page-link" href="/post/search?keyword={{keyword}}&page={{.}}">{{.}}</a>
+		{{/pageIndex}}
+		{{#pageVo.hasNext}}
+			<li class="page-item">
+				<a class="page-link" href="/post/search?keyword={{keyword}}&page={{pageVo.nextIndex}}" aria-label="Next">&rsaquo;</a>
+				<span aria-hidden="true"></span>
+			</li>		
+		{{/pageVo.hasNext}}
+		
+		<!-- 다음 페이지가 존재하지 않으면 > 버튼이 안 보임 -->
+		{{^pageVo.hasNext}}	
+		{{/pageVo.hasNext}}
+		
+		<li class="page-item">
+			<a class="page-link" href="/post/search?keyword={{keyword}}&page={{pageVo.totalPage}}" aria-label="Last">&raquo;</a>
+			<span aria-hidden="true"></span>
+		</li>
+	</ul>
+</div>
